@@ -1,0 +1,111 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/app-layout/demo/demo1.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<dom-module id="diary-component">
+  <template>
+    <custom-style>
+      <style is="custom-style">
+        html,
+        body {
+          margin: 0;
+          font-family: 'Roboto', 'Noto', sans-serif;
+          -webkit-font-smoothing: antialiased;
+          background: #f1f1f1;
+          max-height: 368px;
+        }
+
+        app-toolbar {
+          background-color: #4285f4;
+          color: #fff;
+        }
+
+        paper-icon-button {
+          --paper-icon-button-ink-color: white;
+        }
+
+        paper-icon-button+[main-title] {
+          margin-left: 24px;
+        }
+
+        paper-progress {
+          display: block;
+          width: 100%;
+          --paper-progress-active-color: rgba(255, 255, 255, 0.5);
+          --paper-progress-container-color: transparent;
+        }
+
+        app-header {
+          @apply --layout-fixed-top;
+          color: #fff;
+          --app-header-background-rear-layer: {
+            background-color: #ef6c00;
+          }
+          ;
+        }
+
+        app-drawer {
+          --app-drawer-scrim-background: rgba(0, 0, 100, 0.8);
+          --app-drawer-content-container: {
+            background-color: #B0BEC5;
+          }
+        }
+
+        sample-content {
+          padding-top: 64px;
+        }
+      </style>
+    </custom-style>
+    <app-header reveals>
+      <app-toolbar>
+        <div main-title>My app</div>
+        <paper-icon-button  on-tap="handleClick" icon="search" ></paper-icon-button>
+        <paper-icon-button icon="add"></paper-icon-button>
+        <paper-progress value="10" indeterminate bottom-item></paper-progress>
+      </app-toolbar>
+    </app-header>
+    <sample-content size="10"></sample-content>
+    <button on-click="handleClick">Kick Me</button>
+
+    <paper-dialog id="dialog">
+      <h2>Dialog Title</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </paper-dialog>
+
+  </template>
+
+  <script>
+    /**
+     * `agent2-0`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class DiaryComponent extends Polymer.Element {
+      static get is() { return 'diary-component'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'agent2-0'
+          }
+        };
+      }
+
+      handleClick() {
+        this.$.dialog.open();
+      }
+    }
+
+    window.customElements.define(DiaryComponent.is, DiaryComponent);
+  </script>
+</dom-module>
