@@ -1,12 +1,41 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>agent2-0</title>
-    <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
-    <link rel="import" href="src/diary-component.html">
-  </head>
-  <body>
-    <diary-component></diary-component>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <title>agent2-0</title>
+  <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+  <link rel="import" href="src/diary-component.html">
+</head>
+
+<body>
+  <diary-component></diary-component>
+</body>
+<script>
+
+  const curry = (fn, ...oldArgs) => (...newArgs) => {
+    const args = [...oldArgs, ...newArgs];
+    return (args.length < fn.length) ? curry(fn, ...args) : fn(...args);
+  };
+
+  const demo = (a, b, c, d) => {
+    return a + b + c + d
+  }
+
+
+  var curryEs5 = function () {
+    return function () {
+      var args = Array.prototype.concat.apply([], arguments);
+      return args
+    }
+  }
+
+
+  const demo1 = curry(demo, 3, 2)('dadio', 2)
+//  console.log(demo1)
+//  console.log(curryEs5()([1, 2, 3]));
+   
+
+</script>
+
 </html>

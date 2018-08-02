@@ -1,0 +1,54 @@
+<link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../bower_components/iron-demo-helpers/demo-snippet.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+
+<dom-module id="app-list">
+  <template>
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+
+        paper-listbox {
+          border: 1px dotted #ccc;
+        }
+
+        paper-item {
+          cursor: pointer;
+        }
+
+        .app-section-list{
+          height: 100vh;
+          background:var(--primary-background-color);
+          width: 12vw;
+        }
+
+      </style>
+    </custom-style>
+
+    <section class="app-section-list">
+      <h2>Section</h2>
+    </section>
+
+  </template>
+
+  <script>
+    /**
+     * `agent2-0`
+     * 
+     *
+     * @App Create
+     * @polymer
+     * @demo demo/index.html
+     */
+    class AppList extends Polymer.Element {
+
+      static get is() { return 'app-list'; }
+
+      static get properties() { }
+
+      connectedCallback() { }
+
+    }
+
+    window.customElements.define(AppList.is, AppList);
+  </script>
+</dom-module>
