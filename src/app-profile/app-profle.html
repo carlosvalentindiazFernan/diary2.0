@@ -1,0 +1,127 @@
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+
+<dom-module id="app-profile">
+  <template>
+    <custom-style>
+      <style is="custom-style">
+        h1 {
+          color: #ffffff;
+        }
+
+        paper-card {
+          color: #ffffff;
+          background-color: #303350;
+        }
+
+        .img-container-profile {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .img-profile {
+          width: 30%;
+          border-radius: 50%;
+        }
+
+        .name-card {
+          text-align: center;
+          font-size: 1.5em;
+        }
+        .profession-card{
+          text-align: center;
+        }
+
+        .about-card{
+          padding: 1em;
+        
+        }
+
+        .about-card > p{
+          text-align: center;
+        }
+
+        .profile-description{
+          padding: 1em;
+        }
+
+        .email-card{
+          background: #d2b3b2;
+          padding: 0.2rem;
+          font-weight: bold;
+          color: #6D4C41;
+        }
+
+        .phone-card{
+          background: #f7d070;
+          padding: 0.2rem;
+          font-weight: bold;
+          color: #6D4C41;
+          width: 80%;
+
+        }
+
+        .habilities-card{
+          background: #4acfad;
+          padding: 0.2rem;
+          font-weight: bold;
+          color: #6D4C41;
+          width: 70%;
+
+        }
+
+      </style>
+    </custom-style>
+    <section class="profile-card">
+
+      <paper-card>
+        <div class="card-content">
+          <div class="img-container-profile">
+            <img src="https://fsmedia.imgix.net/d9/e7/c5/00/8a9d/4618/ba6f/c19b7d7c85b6/elon-musk.jpeg?auto=format%2Ccompress&w=800&h=800&crop=entropy&fit=crop"
+              alt="" class="img-profile">
+          </div>
+          <p class="name-card">Nombre</p>
+          <p class="profession-card">Full stack</p>
+
+          <div class="about-card">
+            <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T.)</p>
+          </div>
+
+          <div class="profile-description">
+            <div class="email-card">
+              <p>carlosv.diaz@sgnular.com</p>
+            </div>
+            <div class="phone-card">
+              <p>5555555555</p>
+            </div>
+            <div class="habilities-card">
+              <p>Python,Java,Polymer,Docker</p>
+            </div>
+
+          </div>
+        </div>
+      </paper-card>
+
+    </section>
+  </template>
+
+  <script>
+    /**
+     * `agent2-0`
+     * 
+     *
+     * @App Create
+     * @polymer
+     * @demo demo/index.html
+     */
+    class AppProfile extends Polymer.Element {
+
+      static get is() { return 'app-profile'; }
+
+      static get properties() { }
+
+    }
+
+    window.customElements.define(AppProfile.is, AppProfile);
+  </script>
+</dom-module>

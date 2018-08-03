@@ -13,19 +13,29 @@
 
         paper-item {
           cursor: pointer;
+          background-color: var(--accent-color);
+          color: #ffffff;
+        }
+
+        h3{
+          color: #ffffff;
+          text-align: center;
         }
 
         .app-section-list{
           height: 100vh;
-          background:var(--primary-background-color);
-          width: 12vw;
+          background: #303350;
+          width: 20vw;
         }
 
       </style>
     </custom-style>
 
     <section class="app-section-list">
-      <h2>Section</h2>
+      <h3>My contacts</h3>
+      <paper-item>Inbox</paper-item>
+      <paper-item>Starred</paper-item>
+      <paper-item>Sent mail</paper-item>      
     </section>
 
   </template>

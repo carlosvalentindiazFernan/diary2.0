@@ -4,10 +4,13 @@
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
 
 <link rel="import" href="./app-create/app-create.html">
 <link rel="import" href="./app-list/app-list.html">
 <link rel="import" href="./app-theme/app-theme.html">
+<link rel="import" href="./app-profile/app-profle.html">
+<link rel="import" href="./app-profile/app-profle.html">
 
 <dom-module id="diary-component">
   <template>
@@ -23,13 +26,7 @@
         }
 
         app-toolbar {
-          background: rgba(0,0,218,1);
-          background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,0,218,1)), color-stop(100%, rgba(255,64,128,1)));
-          background: -webkit-linear-gradient(left, rgba(0,0,218,1) 0%, rgba(255,64,128,1) 100%);
-          background: -o-linear-gradient(left, rgba(0,0,218,1) 0%, rgba(255,64,128,1) 100%);
-          background: -ms-linear-gradient(left, rgba(0,0,218,1) 0%, rgba(255,64,128,1) 100%);
-          background: linear-gradient(to right, rgba(0,0,218,1) 0%, rgba(255,64,128,1) 100%);
-
+          background-color: #303350;
           color: #fff;
         }
 
@@ -57,32 +54,47 @@
           ;
         }
 
-        sample-conten{
+        sample-conten {
           margin-top: 4em;
         }
 
-        .container-shell-app{
-          position: absolute;
-          padding-top: 44px;          
+        .container-shell-app {
+          padding-top: 44px;
           display: flex;
           justify-content: space-between;
-          flex-direction: row-reverse;
         }
-        app-list{
-          width: 10em;
+
+        app-list {
+          position: relative;
+        }
+
+        .container-profile-diary {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          background-color: #6a6b96;
+        }
+
+        .profile-diary{
+          width: 50%;
         }
       </style>
     </custom-style>
     <app-header reveals>
       <app-toolbar>
-        <div main-title>My app</div>
+        <div main-title>Diary 2.0</div>
         <paper-icon-button icon="search"></paper-icon-button>
         <paper-icon-button on-tap="handleClick" icon="add"></paper-icon-button>
         <paper-progress value="10" indeterminate bottom-item></paper-progress>
       </app-toolbar>
     </app-header>
     <section class="container-shell-app">
-        <app-list></app-list>
+
+      <app-list></app-list>
+      <section class="container-profile-diary">
+        <app-profile class="profile-diary"></app-profile>
+      </section>
       <app-create></app-create>
     </section>
 
