@@ -8,7 +8,6 @@
       <style is="custom-style" include="demo-pages-shared-styles">
 
         paper-listbox {
-          border: 1px dotted #ccc;
         }
 
         paper-item {
@@ -26,6 +25,20 @@
           height: 100vh;
           background: #303350;
           width: 20vw;
+          overflow: auto;
+
+        }
+
+        @media only screen and (max-width: 768px) {
+          .app-section-list{
+            flex: 1;
+            overflow: auto;
+            display: flex;
+            height: 4em;
+            flex-direction:row;
+            width: 100%;
+            margin-top: 1em;
+          }
         }
 
       </style>
@@ -36,6 +49,14 @@
       <paper-item>Inbox</paper-item>
       <paper-item>Starred</paper-item>
       <paper-item>Sent mail</paper-item>      
+
+      <paper-item>Inbox</paper-item>
+      <paper-item>Starred</paper-item>
+      <paper-item>Sent mail</paper-item>      
+      <paper-item>Inbox</paper-item>
+      <paper-item>Starred</paper-item>
+      <paper-item>Sent mail</paper-item>      
+
     </section>
 
   </template>
