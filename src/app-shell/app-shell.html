@@ -1,0 +1,122 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/app-layout/demo/demo1.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+
+<link rel="import" href="./app-create/app-create.html">
+<link rel="import" href="./app-list/app-list.html">
+<link rel="import" href="./app-theme/app-theme.html">
+<link rel="import" href="./app-profile/app-profle.html">
+<link rel="import" href="./app-profile/app-profle.html">
+
+
+<dom-module id="app-shell">
+    <template>
+        <custom-style>
+            <style is="custom-style">
+                html,
+                body {
+                    margin: 0;
+                    font-family: 'Roboto', 'Noto', sans-serif;
+                    -webkit-font-smoothing: antialiased;
+                    background: #f1f1f1;
+                    max-height: 368px;
+                }
+
+                app-toolbar {
+                    background-color: #303350;
+                    color: #fff;
+                }
+
+                paper-icon-button {
+                    --paper-icon-button-ink-color: white;
+                }
+
+                paper-icon-button+[main-title] {
+                    margin-left: 24px;
+                }
+
+                paper-progress {
+                    display: block;
+                    width: 100%;
+                    --paper-progress-active-color: rgba(255, 255, 255, 0.5);
+                    --paper-progress-container-color: transparent;
+                }
+
+                app-header {
+                    @apply --layout-fixed-top;
+                    color: var(--primary-text-color);
+                    --app-header-background-rear-layer: {
+                        background-color: #ef6c00;
+                    }
+                    ;
+                }
+
+                sample-conten {
+                    margin-top: 4em;
+                }
+
+                .container-shell-app {
+                    padding-top: 44px;
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                app-list {
+                    position: relative;
+                }
+
+                .container-profile-diary {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    background-color: #6a6b96;
+                }
+
+                .profile-diary {
+                    width: 50%;
+                    margin-top: 2em;
+                }
+
+
+                @media only screen and (max-width: 768px) {
+                    .container-shell-app {
+                        display: block;
+                    }
+                    .profile-diary {
+                        width: 90%;
+                        padding: 1em;
+                    }
+
+                }
+            </style>
+        </custom-style>
+
+
+
+    </template>
+
+    <script>
+        /**
+         * `agent2-0`
+         * 
+         *
+         * @App shell
+         * @polymer
+         * @demo demo/index.html
+         */
+        class AppShell extends Polymer.Element {
+
+            static get is() { return 'app-shell'; }
+
+            static get properties() {}
+
+        }
+
+        window.customElements.define(AppShell.is, AppShell);
+    </script>
+</dom-module>

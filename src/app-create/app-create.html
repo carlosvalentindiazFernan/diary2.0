@@ -1,6 +1,8 @@
 <link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+
 
 <dom-module id="app-create">
   <template>
@@ -16,11 +18,29 @@
           <iron-icon icon="icons:account-box" slot="prefix"></iron-icon>
         </paper-input>
         <paper-input label="lasName">
-            <iron-icon icon="icons:account-box" slot="prefix"></iron-icon>
+          <iron-icon icon="icons:account-box" slot="prefix"></iron-icon>
         </paper-input>
+
         <paper-input label="email">
-            <iron-icon icon="icons:drafts" slot="prefix"></iron-icon>
+          <iron-icon icon="icons:drafts" slot="prefix"></iron-icon>
         </paper-input>
+
+        <paper-input label="Phone">
+            <iron-icon icon="icons:" slot="prefix"></iron-icon>
+        </paper-input>
+  
+
+        <div class="section-tecnologies">
+          <label for="">Select yours tecnologies</label>
+          <paper-checkbox checked>Python</paper-checkbox>
+          <paper-checkbox>Java Script</paper-checkbox>
+          <paper-checkbox>CSS</paper-checkbox>
+          <paper-checkbox>Polymer</paper-checkbox>
+          <paper-checkbox>Android</paper-checkbox>
+
+        </div>
+
+
       </form>
     </paper-dialog>
 
