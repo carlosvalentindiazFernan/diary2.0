@@ -76,23 +76,22 @@
           background-color: #6a6b96;
         }
 
-        .profile-diary{
+        .profile-diary {
           width: 50%;
           margin-top: 2em;
         }
 
 
         @media only screen and (max-width: 768px) {
-          .container-shell-app{
+          .container-shell-app {
             display: block;
           }
-          .profile-diary{
+          .profile-diary {
             width: 90%;
             padding: 1em;
           }
 
         }
-
       </style>
     </custom-style>
     <app-header reveals>
@@ -109,7 +108,7 @@
       <section class="container-profile-diary">
         <app-profile class="profile-diary"></app-profile>
       </section>
-      <app-create></app-create>
+      <app-create id="appProfile" on-contact-changed="_dataShow"></app-create>
     </section>
 
 
@@ -129,20 +128,25 @@
 
       static get properties() {
         return {
-          prop1: {
-            type: String,
-            value: 'agent2-0'
+          contacts: {
+            type: Array,
+            value: []
           }
         };
       }
 
       handleClick() {
-        this.dispatchEvent(new CustomEvent('openDialog', {
-          bubbles: true,
-          composed: true,
+        this.$.appProfile.dispatchEvent(new CustomEvent('openDialog', {
           detail: true
         }));
-        console.log('demo')
+      }
+
+      _dataShow(event) {
+        let contact = event.detail
+        contact.id = this.contacts.length +1 
+        this.push(`contacts`, contact)
+        console.log(this.contacts);
+        
       }
     }
 
