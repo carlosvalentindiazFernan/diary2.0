@@ -28,31 +28,32 @@
           text-align: center;
           font-size: 1.5em;
         }
-        .profession-card{
+
+        .profession-card {
           text-align: center;
         }
 
-        .about-card{
+        .about-card {
           padding: 1em;
-        
+
         }
 
-        .about-card > p{
+        .about-card>p {
           text-align: center;
         }
 
-        .profile-description{
+        .profile-description {
           padding: 1em;
         }
 
-        .email-card{
+        .email-card {
           background: #d2b3b2;
           padding: 0.2rem;
           font-weight: bold;
           color: #6D4C41;
         }
 
-        .phone-card{
+        .phone-card {
           background: #f7d070;
           padding: 0.2rem;
           font-weight: bold;
@@ -61,7 +62,7 @@
 
         }
 
-        .habilities-card{
+        .habilities-card {
           background: #4acfad;
           padding: 0.2rem;
           font-weight: bold;
@@ -69,7 +70,6 @@
           width: 70%;
 
         }
-
       </style>
     </custom-style>
     <section class="profile-card">
@@ -81,19 +81,19 @@
             <img src="https://fsmedia.imgix.net/d9/e7/c5/00/8a9d/4618/ba6f/c19b7d7c85b6/elon-musk.jpeg?auto=format%2Ccompress&w=800&h=800&crop=entropy&fit=crop"
               alt="" class="img-profile">
           </div>
-          <p class="name-card">Nombre</p>
+          <p class="name-card">{{fullName}}</p>
           <p class="profession-card">Full stack</p>
 
           <div class="about-card">
-            <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T.)</p>
+            <p>[[contact.bio]]</p>
           </div>
 
           <div class="profile-description">
             <div class="email-card">
-              <p>carlosv.diaz@sgnular.com</p>
+              <p>[[contact.email]]</p>
             </div>
             <div class="phone-card">
-              <p>5555555555</p>
+              <p>[[contact.telephone]]</p>
             </div>
             <div class="habilities-card">
               <p>Python,Java,Polymer,Docker</p>
@@ -119,7 +119,25 @@
 
       static get is() { return 'app-profile'; }
 
-      static get properties() { }
+      static get properties() {
+        return{
+          contact: {
+            type: Object,
+            value: { },
+            notify: true,
+            reflectToAttribute: true, 
+            observer: '_contactChanged'
+          },
+          fullName: {
+            type: String,
+            computed: 'computeFullName(contact.name,contact.lastName)'
+          }            
+        }
+      }
+
+      computeFullName(name,lastName) {
+        return `${name} ${lastName}` 
+      }
 
     }
 

@@ -20,15 +20,20 @@
           <paper-input class="control" id="name" label="Name" pattern="^[A-Za-z ]+$" required auto-validate error-message="Name is required!"></paper-input>
           <paper-input class="control" id="lastname" label="Last name" required auto-validate error-message="last Name is required!"></paper-input>
           <paper-input class="control" id="email" label="Email" required auto-validate error-message="email is required!"></paper-input>
+          <paper-input class="control" id="profession" label="Profession" required auto-validate error-message="profession is required!"></paper-input>
           <paper-input class="control" id="phone" label="Phone" type="text" required auto-validate error-message="Phone is required!"></paper-input>
           <paper-textarea id="aboutme" id="aboutme" label="About me" required auto-validate error-message="About me is required!"></paper-textarea>
+          <input type="file" accept=".png, .jpg, .jpeg" />
 
-          <paper-button raised on-tap="_showData">Add contact</paper-button>
 
 
         </form>
 
+        <div class="buttons">
+          <paper-button dialog-dismiss on-tap="_cleanInput">Cancel</paper-button>
+          <paper-button dialog-confirm autofocus on-tap="_showData">Add contact</paper-button>
 
+        </div>
     </paper-dialog>
 
 

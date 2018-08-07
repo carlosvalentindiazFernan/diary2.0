@@ -6,9 +6,7 @@
   <template>
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
-
-        paper-listbox {
-        }
+        paper-listbox {}
 
         paper-item {
           cursor: pointer;
@@ -16,12 +14,12 @@
           color: #ffffff;
         }
 
-        h3{
+        h3 {
           color: #ffffff;
           text-align: center;
         }
 
-        .app-section-list{
+        .app-section-list {
           height: 100vh;
           background: #303350;
           width: 20vw;
@@ -30,32 +28,26 @@
         }
 
         @media only screen and (max-width: 768px) {
-          .app-section-list{
+          .app-section-list {
             flex: 1;
             overflow: auto;
             display: flex;
             height: 4em;
-            flex-direction:row;
+            flex-direction: row;
             width: 100%;
             margin-top: 1em;
           }
         }
-
       </style>
     </custom-style>
 
     <section class="app-section-list">
       <h3>My contacts</h3>
-      <paper-item>Inbox</paper-item>
-      <paper-item>Starred</paper-item>
-      <paper-item>Sent mail</paper-item>      
 
-      <paper-item>Inbox</paper-item>
-      <paper-item>Starred</paper-item>
-      <paper-item>Sent mail</paper-item>      
-      <paper-item>Inbox</paper-item>
-      <paper-item>Starred</paper-item>
-      <paper-item>Sent mail</paper-item>      
+      <template is="dom-repeat" items="[[contacts]]"  as="contact">
+        <paper-item index="[[contact.index]]" on-tap="_getContant">[[contact.name]]</paper-item>
+      </template>
+      
 
     </section>
 
@@ -74,9 +66,25 @@
 
       static get is() { return 'app-list'; }
 
-      static get properties() { }
+      static get properties() {
+        return {
+          contacts: {
+            type: Array,
+            value: []
+          }
+        }
+      }
 
       connectedCallback() { }
+
+      _getContant(event){
+        this.dispatchEvent(new CustomEvent('index-changed', {
+          bubbles:true, 
+          composed:true, 
+          detail:event.currentTarget.index
+        }));
+        
+      }
 
     }
 

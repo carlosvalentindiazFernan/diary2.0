@@ -99,16 +99,15 @@
         <div main-title>Diary 2.0</div>
         <paper-icon-button icon="search"></paper-icon-button>
         <paper-icon-button on-tap="handleClick" icon="add"></paper-icon-button>
-        <paper-progress value="10" indeterminate bottom-item></paper-progress>
       </app-toolbar>
     </app-header>
     <section class="container-shell-app">
 
-      <app-list></app-list>
+      <app-list contacts="[[contacts]]"></app-list>
       <section class="container-profile-diary">
-        <app-profile class="profile-diary"></app-profile>
+        <app-profile class="profile-diary" contact="[[person]]"></app-profile>
       </section>
-      <app-create id="appProfile" on-contact-changed="_dataShow"></app-create>
+      <app-create id="appProfile"></app-create>
     </section>
 
 
@@ -130,9 +129,37 @@
         return {
           contacts: {
             type: Array,
-            value: []
+            value: [
+              {
+                name: "carlos",
+                lastName: "diaz",
+                email: "fernancarldiaz@outlook.com",
+                telephone: "5555555555",
+                bio: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco."
+              }
+            ]
+          },
+          person:{
+            type:Object,
+            value:{},
+            notify:true
+          },
+          filter:{
+            type:String,
+            value:``
+          },
+          index:{
+            type:Number,
+            value:0
           }
+          
         };
+      }
+
+      ready(){
+        super.ready();
+        this.addEventListener('contact-changed',(e) => this._dataShow(e));
+        this.addEventListener('index-changed',(e) => this._getContact(e));
       }
 
       handleClick() {
@@ -143,11 +170,18 @@
 
       _dataShow(event) {
         let contact = event.detail
-        contact.id = this.contacts.length +1 
+        contact.index = this.contacts.length +1 
         this.push(`contacts`, contact)
         console.log(this.contacts);
         
       }
+
+      _getContact(event){
+        let element = this.contacts.filter(e => e.index == event.detail)[0];
+        console.log(element)
+        this.person = element
+      }
+
     }
 
     window.customElements.define(DiaryComponent.is, DiaryComponent);
