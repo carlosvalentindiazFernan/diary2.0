@@ -72,38 +72,44 @@
         }
       </style>
     </custom-style>
-    <section class="profile-card">
 
-      <paper-card>
+    <template is="dom-if" if="{{contact.email}}">
+      <section class="profile-card">
 
-        <div class="card-content">
-          <div class="img-container-profile">
-            <img src="https://fsmedia.imgix.net/d9/e7/c5/00/8a9d/4618/ba6f/c19b7d7c85b6/elon-musk.jpeg?auto=format%2Ccompress&w=800&h=800&crop=entropy&fit=crop"
-              alt="" class="img-profile">
-          </div>
-          <p class="name-card">{{fullName}}</p>
-          <p class="profession-card">Full stack</p>
+        <paper-card>
 
-          <div class="about-card">
-            <p>[[contact.bio]]</p>
-          </div>
-
-          <div class="profile-description">
-            <div class="email-card">
-              <p>[[contact.email]]</p>
+          <div class="card-content">
+            <div class="img-container-profile">
+              <img src="https://fsmedia.imgix.net/d9/e7/c5/00/8a9d/4618/ba6f/c19b7d7c85b6/elon-musk.jpeg?auto=format%2Ccompress&w=800&h=800&crop=entropy&fit=crop"
+                alt="" class="img-profile">
             </div>
-            <div class="phone-card">
-              <p>[[contact.telephone]]</p>
-            </div>
-            <div class="habilities-card">
-              <p>Python,Java,Polymer,Docker</p>
+            <p class="name-card">{{fullName}}</p>
+            <p class="profession-card">Full stack</p>
+
+            <div class="about-card">
+              <p>[[contact.bio]]</p>
             </div>
 
-          </div>
-        </div>
-      </paper-card>
+            <div class="profile-description">
+              <div class="email-card">
+                <p>[[contact.email]]</p>
+              </div>
+              <div class="phone-card">
+                <p>[[contact.telephone]]</p>
+              </div>
+              <div class="habilities-card">
+                <p>Python,Java,Polymer,Docker</p>
+              </div>
 
-    </section>
+            </div>
+          </div>
+        </paper-card>
+
+      </section>
+    </template>
+
+
+
   </template>
 
   <script>
@@ -120,23 +126,23 @@
       static get is() { return 'app-profile'; }
 
       static get properties() {
-        return{
+        return {
           contact: {
             type: Object,
-            value: { },
+            value: {},
             notify: true,
-            reflectToAttribute: true, 
+            reflectToAttribute: true,
             observer: '_contactChanged'
           },
           fullName: {
             type: String,
             computed: 'computeFullName(contact.name,contact.lastName)'
-          }            
+          }
         }
       }
 
-      computeFullName(name,lastName) {
-        return `${name} ${lastName}` 
+      computeFullName(name, lastName) {
+        return `${name} ${lastName}`
       }
 
     }

@@ -23,7 +23,7 @@
           <paper-input class="control" id="profession" label="Profession" required auto-validate error-message="profession is required!"></paper-input>
           <paper-input class="control" id="phone" label="Phone" type="text" required auto-validate error-message="Phone is required!"></paper-input>
           <paper-textarea id="aboutme" id="aboutme" label="About me" required auto-validate error-message="About me is required!"></paper-textarea>
-          <input type="file" accept=".png, .jpg, .jpeg" />
+          <input type="file" id="myFile" size="50">
 
 
 
@@ -74,6 +74,8 @@
           objectUser.email = this.$.email.value;
           objectUser.telephone = this.$.phone.value;
           objectUser.bio = this.$.aboutme.value;
+          objectUser.profile = this.$.myFile.value
+          
           this.dispatchEvent(new
             CustomEvent(`contact-changed`, {
               bubbles: true, composed: true,
