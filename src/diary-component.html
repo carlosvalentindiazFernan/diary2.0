@@ -1,16 +1,4 @@
-<link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../bower_components/app-layout/demo/demo1.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
-<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
-
-<link rel="import" href="./app-create/app-create.html">
-<link rel="import" href="./app-list/app-list.html">
-<link rel="import" href="./app-theme/app-theme.html">
-<link rel="import" href="./app-profile/app-profle.html">
-<link rel="import" href="./app-profile/app-profle.html">
+<link rel="import" href="lazy-resources.html">
 
 <dom-module id="diary-component">
   <template>
@@ -97,7 +85,7 @@
     <app-header reveals>
       <app-toolbar>
         <div main-title>Diary 2.0</div>
-        <paper-icon-button icon="search"></paper-icon-button>
+        <paper-icon-button icon="search" on-tap="_searchData"></paper-icon-button>
         <paper-icon-button on-tap="handleClick" icon="add"></paper-icon-button>
       </app-toolbar>
     </app-header>
@@ -108,6 +96,7 @@
         <app-profile class="profile-diary" contact="[[person]]"></app-profile>
       </section>
       <app-create id="appProfile"></app-create>
+      <app-search id="appSearch" result="[[filter]]"></app-search>
     </section>
 
 
@@ -131,6 +120,7 @@
             type: Array,
             value: [
               {
+                index: 1,
                 name: "carlos",
                 lastName: "diaz",
                 email: "fernancarldiaz@outlook.com",
@@ -139,27 +129,29 @@
               }
             ]
           },
-          person:{
-            type:Object,
-            value:{},
-            notify:true
+          person: {
+            type: Object,
+            value: {},
+            notify: true
           },
-          filter:{
-            type:String,
-            value:``
+          filter: {
+            type: Object,
+            value: ``
           },
-          index:{
-            type:Number,
-            value:0
+          index: {
+            type: Number,
+            value: 0
           }
-          
         };
       }
 
-      ready(){
+      ready() {
         super.ready();
-        this.addEventListener('contact-changed',(e) => this._dataShow(e));
-        this.addEventListener('index-changed',(e) => this._getContact(e));
+        this.addEventListener('contact-changed', (e) => this._dataShow(e));
+        this.addEventListener('index-changed', (e) => this._getContact(e));
+        this.addEventListener('seach-set-contant', (e) => this._searchContact(e));
+        this.addEventListener('show-contanct', (e) => this._getContact(e));
+        this.person = this.contacts[0]
       }
 
       handleClick() {
@@ -170,15 +162,27 @@
 
       _dataShow(event) {
         let contact = event.detail
-        contact.index = this.contacts.length +1 
+        contact.index = this.contacts.length + 1
         this.push(`contacts`, contact)
         console.log(this.contacts);
-        
+
       }
 
-      _getContact(event){
+      _showContact(event) {
         let element = this.contacts.filter(e => e.index == event.detail)[0];
         console.log(element)
+        this.person = element
+
+      }
+
+      _searchData(event) {
+        this.$.appSearch.dispatchEvent(new CustomEvent('searchDialog', {
+          detail: true
+        }));
+      }
+
+      _getContact(event) {
+        let element = this.contacts.filter(e => e.index == event.detail)[0];
         this.person = element
       }
 

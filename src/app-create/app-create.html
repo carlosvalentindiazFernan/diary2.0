@@ -17,12 +17,23 @@
       <iron-form id="dialogForm">
         <form action="">
 
-          <paper-input class="control" id="name" label="Name" pattern="^[A-Za-z ]+$" required auto-validate error-message="Name is required!"></paper-input>
-          <paper-input class="control" id="lastname" label="Last name" required auto-validate error-message="last Name is required!"></paper-input>
-          <paper-input class="control" id="email" label="Email" required auto-validate error-message="email is required!"></paper-input>
-          <paper-input class="control" id="profession" label="Profession" required auto-validate error-message="profession is required!"></paper-input>
-          <paper-input class="control" id="phone" label="Phone" type="text" required auto-validate error-message="Phone is required!"></paper-input>
-          <paper-textarea id="aboutme" id="aboutme" label="About me" required auto-validate error-message="About me is required!"></paper-textarea>
+          <paper-input class="control" id="name" label="Name" pattern="^[A-Za-z ]+$" required auto-validate error-message="Name is required!">
+              <iron-icon icon="icons:assignment-ind" slot="prefix"></iron-icon>
+          </paper-input>
+          <paper-input class="control" id="lastname" label="Last name" required auto-validate error-message="last Name is required!">
+              <iron-icon icon="icons:assignment-ind" slot="prefix"></iron-icon>
+          </paper-input>
+          <paper-input class="control" id="email" label="Email" required auto-validate error-message="email is required!">
+              <iron-icon icon="icons:mail" slot="prefix"></iron-icon>
+          </paper-input>
+          <paper-input class="control" id="profession" label="Profession" required auto-validate error-message="profession is required!">
+              <iron-icon icon="icons:stars" slot="prefix"></iron-icon>
+          </paper-input>
+          <paper-input class="control" id="phone" label="Phone" type="text" required auto-validate error-message="Phone is required!">
+              <iron-icon icon="icons:settings-phone" slot="prefix"></iron-icon>
+          </paper-input>
+          <paper-textarea id="aboutme" id="aboutme" label="About me" required auto-validate error-message="About me is required!">            
+          </paper-textarea>
           <input type="file" id="myFile" size="50">
 
 

@@ -12,9 +12,19 @@
     <paper-dialog id="dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
       <h2>Search profile</h2>
       <form action="">
-        <paper-input label="email">
-            <iron-icon icon="icons:drafts" slot="prefix"></iron-icon>
+        <paper-input id="email" label="email">
+          <iron-icon icon="icons:drafts" slot="prefix"></iron-icon>
         </paper-input>
+        <paper-button on-tap="_showData">search</paper-button>
+
+        <template is="dom-if" if="{{result.email}}">
+
+          <div class="container-results">
+            <paper-item ialog-confirm autofocus index="[[result.index]]" on-tap="_showContant">[[result.name]]</paper-item>
+          </div>
+
+        </template>
+
       </form>
     </paper-dialog>
 
@@ -34,9 +44,47 @@
 
       static get is() { return 'app-search'; }
 
-      static get properties() {}
+      ready() {
+        super.ready();
+        this.addEventListener('searchDialog', (e) => {
+          if (e.detail) {
+            this.$.dialog.open();
+          }
+        });
+      }
 
-      connectedCallback() {}
+      static get properties() {
+        return {
+          result: {
+            type: Object,
+            value: {},
+            notify: true,
+            reflectToAttribute: true,
+            observer: '_contactChanged'
+          },
+          fullName: {
+            type: String,
+            computed: 'computeFullName(result.name,result.lastName)'
+          }
+        }
+      }
+
+      _showContant(event) {
+        console.log(event.currentTarget.index)
+        this.dispatchEvent(new
+          CustomEvent(`show-contanct`, {
+            bubbles: true, composed: true,
+            detail: event.currentTarget.index
+          }));
+      }
+
+      _showData(event) {
+        this.dispatchEvent(new
+          CustomEvent(`seach-set-contant`, {
+            bubbles: true, composed: true,
+            detail: this.$.email.value
+          }));
+      }
 
     }
 
