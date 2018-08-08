@@ -1,21 +1,14 @@
 {
-    "extends": ["eslint:recommended", "google"],
-    "parserOptions": {
-      "ecmaVersion": 6
-    },
-    "env": {
-      "browser": true
-    },
-    "plugins": [
-      "html"
-    ],
-    "rules": {
-      "brace-style": "off",
-      "new-cap": ["error", { "capIsNewExceptions": ["Polymer"] }],
-      "no-var": "off",
-      "require-jsdoc": "off"
-    },
+    "extends": "airbnb-base",
     "globals": {
-      "Polymer": true
-    }
-  }
+        "Polymer": false
+    },
+    "plugins": [ "html" ],
+    "rules": {
+        "new-cap": "off",
+        "func-names": "off"
+    },
+    "settings": {
+        "html/html-extensions": [".html"],
+    }    
+}
