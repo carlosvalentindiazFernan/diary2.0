@@ -168,11 +168,11 @@
 
       }
 
-      _showContact(event) {
-        let element = this.contacts.filter(e => e.index == event.detail)[0];
+      _searchContact(event) {
+        console.log(event.detail)
+        let element = this.contacts.filter(e => e.email == event.detail)[0];
         console.log(element)
-        this.person = element
-
+        this.filter = element
       }
 
       _searchData(event) {
